@@ -2,6 +2,8 @@
 window.onload=function(){  
 
           //菜单栏脚本
+
+            var bigtu=document.getElementById("bigtu");
 		    var nav=document.getElementById("nav");
 			var oLamp=document.getElementById("lamp");
 			var oUl=document.getElementById("nav-list");
@@ -85,13 +87,14 @@ window.onload=function(){
           $(".btn ul li").mouseout(function(){
             autoplay();
           });
-          function autoplay(){
+         function autoplay(){
             setTime=setInterval(function(){
                 _index++;
                 if (_index>3) {_index=0;}
                 $(".btn ul li").eq(_index).addClass("onhover").siblings("li").removeClass("onhover");
               $(".tu").eq(_index).fadeIn(300).siblings(".tu").fadeOut(300); 
-            },1800);}
+            },1800);
+          };
             autoplay();
 
         //案例展示画面轮播
@@ -109,8 +112,23 @@ window.onload=function(){
 	       
 	        
 	        $(".pre").click(movel);     
-	        $(".next").click(move); 
+	        $(".next").click(move);
 
+            
+
+
+
+
+	          var ne = MonoEvent,
+				$bigtu = ne( "#bigtu");
+				$bigtu.on( "swipeLeft swipeRight swipeUp swipeDown", function( e ){
+						if (e.type=="swipeLeft") {
+		                       movel(); 
+						}else if(e.type=="swipeRight"){
+		                        move(); 
+						};
+					});
+   
 	        function move(){
 	              
 	             j++;
@@ -134,7 +152,6 @@ window.onload=function(){
 	             
 	              t=setInterval(move,2500);
 	             })
-   }            
-   
-
-	
+	         
+	};			
+             
